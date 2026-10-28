@@ -866,7 +866,7 @@ section[id]{scroll-margin-top:64px}
     </div>
     <a href="#du-an">Dự án</a>
     <a href="#doi-tac">Khách hàng</a>
-    <a href="#goc-sang-tao" id="navBlog" hidden>Góc sáng tạo</a>
+    <a href="#goc-sang-tao" id="navBlog">Góc sáng tạo</a>
     <a href="#cong-dong">Cộng đồng</a>
   </nav>
   <a class="btn primary small" href="#dat-lich">Đặt lịch</a>
@@ -1339,7 +1339,7 @@ section[id]{scroll-margin-top:64px}
   </div>
 </div></section>
 
-<section class="alt" id="goc-sang-tao" hidden><div class="wrap wide dk dk-stack">
+<section class="alt" id="goc-sang-tao"><div class="wrap wide dk dk-stack">
   <div class="sec-head">
   <p class="label">Góc sáng tạo</p>
   <h2>Chuyện nghề, tư duy và những điều Zựu học được khi làm thương hiệu.</h2>
@@ -1347,7 +1347,7 @@ section[id]{scroll-margin-top:64px}
   </div>
   <div class="sec-body">
   <div class="chips" id="postChips"></div>
-  <div class="posts" id="posts"></div>
+  <div class="posts" id="posts"><p class="fine" id="postsEmpty">Bài đầu tiên đang được chuẩn bị. Trong lúc chờ, bạn xem <a class="tt" href="#du-an">dự án</a> hoặc theo dõi TikTok <a class="tt" href="https://www.tiktok.com/@zuu.designer" target="_blank" rel="noopener">@zuu.designer</a>.</p></div>
   </div>
 </div></section>
 
@@ -1478,7 +1478,7 @@ section[id]{scroll-margin-top:64px}
     <p class="mn-label">Khám phá</p>
     <a href="#doi-tac">Khách hàng</a>
     <a href="#du-an">Dự án</a>
-    <a href="#goc-sang-tao" id="mnavBlog" hidden>Góc sáng tạo</a>
+    <a href="#goc-sang-tao" id="mnavBlog">Góc sáng tạo</a>
     <a href="#video" id="mnavVideo" hidden>Video</a>
     <a href="#cong-dong">Cộng đồng Z AI Agent</a>
     <a class="btn primary full" href="#dat-lich">Đặt lịch</a>
@@ -1681,7 +1681,7 @@ const BLOG_SHEET="1QFs_rmTsWSzwJvc41zS8Svzp50dG6jwyUZukP45bWdo";
     const topics=[...new Set(POSTS.map(p=>p.topic).filter(Boolean))];
     if(topics.length>1){chips.innerHTML=`<button type="button" class="chip on" data-t="">Tất cả</button>`+topics.map(t=>`<button type="button" class="chip" data-t="${esc(t)}">${esc(t)}</button>`).join("");
       chips.addEventListener("click",e=>{const b=e.target.closest(".chip"); if(!b) return; topic=b.dataset.t; chips.querySelectorAll(".chip").forEach(c=>c.classList.toggle("on",c===b)); draw();});}
-    draw(); sec.hidden=false; ["navBlog","mnavBlog"].forEach(i=>{const nb=document.getElementById(i); if(nb) nb.hidden=false;});
+    draw();
     check();
   }).catch(()=>{});
 })();

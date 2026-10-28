@@ -1499,21 +1499,32 @@ const fl=document.getElementById("floating"), tt=document.getElementById("totop"
 })();
 
 
-/* Video TikTok: chị Mai gửi link, thêm vào danh sách này (mới nhất để trên cùng). Mục tự ẩn khi danh sách trống. */
-const VIDEOS=[
-  /* {url:"https://www.tiktok.com/@zuu.designer/video/1234567890", title:"Hậu trường test màu tại xưởng in"}, */
-];
+/* Video TikTok: đọc từ Google Sheet "Video maizuu.vn" (cột A link, B tiêu đề, C gõ x để ẩn). Sheet phải để "Bất kỳ ai có đường liên kết: Người xem". Danh sách VIDEOS bên dưới chỉ dùng khi không đọc được Sheet. */
+const VIDEO_SHEET="1PHd7mZELhjhXMsoHxxgz9fL8fMJWspKGE2-X35u8E8w";
+const VIDEOS=[];
 (function(){
-  const sec=document.getElementById("video"), box=document.getElementById("vids"); if(!sec||!box||!VIDEOS.length) return;
+  const sec=document.getElementById("video"), box=document.getElementById("vids"); if(!sec||!box) return;
   const esc=s=>String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-  box.innerHTML=VIDEOS.map((v,i)=>`<a class="vid" href="${esc(v.url)}" target="_blank" rel="noopener" data-i="${i}"><span class="play"></span><span class="vt">${esc(v.title||"")}<small>TikTok · @zuu.designer</small></span></a>`).join("");
-  sec.hidden=false;
-  /* lấy ảnh bìa và tiêu đề từ TikTok, lấy không được thì giữ thẻ nền đỏ */
-  VIDEOS.forEach((v,i)=>{fetch("https://www.tiktok.com/oembed?url="+encodeURIComponent(v.url)).then(r=>r.json()).then(d=>{
-    const a=box.querySelector(`[data-i="${i}"]`); if(!a||!d) return;
-    if(d.thumbnail_url){const im=new Image(); im.src=d.thumbnail_url; im.alt=""; im.loading="lazy"; a.prepend(im);}
-    if(!v.title&&d.title){a.querySelector(".vt").firstChild.textContent=d.title.slice(0,90);}
-  }).catch(()=>{});});
+  const render=list=>{
+    list=list.filter(v=>/tiktok\.com\//i.test(v.url)); if(!list.length) return;
+    box.innerHTML=list.map((v,i)=>`<a class="vid" href="${esc(v.url)}" target="_blank" rel="noopener" data-i="${i}"><span class="play"></span><span class="vt"><span class="vtt">${esc(v.title||"")}</span><small>TikTok · @zuu.designer</small></span></a>`).join("");
+    sec.hidden=false;
+    /* lấy ảnh bìa và tiêu đề từ TikTok, lấy không được thì giữ thẻ nền đỏ */
+    list.forEach((v,i)=>{fetch("https://www.tiktok.com/oembed?url="+encodeURIComponent(v.url)).then(r=>r.json()).then(d=>{
+      const a=box.querySelector(`[data-i="${i}"]`); if(!a||!d) return;
+      if(d.thumbnail_url){const im=new Image(); im.src=d.thumbnail_url; im.alt=""; im.loading="lazy"; a.prepend(im);}
+      if(!v.title&&d.title){a.querySelector(".vtt").textContent=d.title.slice(0,90);}
+    }).catch(()=>{});});
+  };
+  const parseCSV=t=>{const rows=[];let row=[],cell="",q=false;for(let i=0;i<t.length;i++){const c=t[i];
+    if(q){if(c==='"'){if(t[i+1]==='"'){cell+='"';i++;}else q=false;}else cell+=c;}
+    else if(c==='"')q=true;else if(c===","){row.push(cell);cell="";}else if(c==="\n"){row.push(cell);rows.push(row);row=[];cell="";}else if(c!=="\r")cell+=c;}
+    if(cell||row.length){row.push(cell);rows.push(row);} return rows;};
+  fetch(`https://docs.google.com/spreadsheets/d/${VIDEO_SHEET}/gviz/tq?tqx=out:csv&sheet=Video&t=${Date.now()}`)
+    .then(r=>{if(!r.ok)throw 0;return r.text();})
+    .then(t=>{const rows=parseCSV(t).slice(1).map(r=>({url:(r[0]||"").trim(),title:(r[1]||"").trim(),hide:(r[2]||"").trim()})).filter(v=>v.url&&!v.hide);
+      render(rows.length?rows:VIDEOS);})
+    .catch(()=>render(VIDEOS));
 })();
 /* Cộng đồng Z AI Agent: sao chép lời nhắn trước khi mở Zalo */
 (function(){const a=document.getElementById("zaiZalo"); if(a) a.addEventListener("click",()=>copy("Chào Zựu, mình muốn vào cộng đồng Z AI Agent. Mình là ... , đang làm ..."));})();

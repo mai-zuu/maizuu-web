@@ -650,12 +650,16 @@ body.rd-open .floating .fl-home{margin:0;padding:12px 18px;background:var(--char
 #cong-dong .lead{margin-top:24px;line-height:1.85}
 .zai-join{margin-top:40px;gap:28px}
 .zai-join-txt{gap:14px}
-.zai-join-txt .fine{margin-top:10px}
+.zai-join-txt .fine{margin-top:10px;font-size:11.5px;line-height:1.55;max-width:300px}
 .zai-shot figcaption{padding:16px 18px;line-height:1.6}
 .zai-grid{margin-top:28px;gap:18px}
 .zai-card{padding:26px 22px}
 .zai-card p{margin-top:12px;line-height:1.65}
-@media (min-width:1024px){#cong-dong{padding-block:140px}.dk-cols#cong-dong .wrap{column-gap:104px}#cong-dong .dk-cols{column-gap:104px}.zai-grid{gap:22px}}
+@media (min-width:1024px){#cong-dong{padding-block:140px}.dk-cols#cong-dong .wrap{column-gap:104px}#cong-dong .dk-cols{column-gap:104px}.zai-grid{gap:22px}
+.zai-join{flex-wrap:nowrap;gap:32px;align-items:center}
+.zai-join-txt{flex:1 1 0;min-width:0;flex-direction:row;flex-wrap:wrap;align-items:center;gap:12px}
+.zai-join-txt .fine{flex-basis:100%;margin-top:6px}
+.zai-qr{flex:0 0 auto}.zai-qr img{width:132px}}
 @media (max-width:820px){
   #cong-dong{padding-block:96px 88px}
   #cong-dong .lead{margin-top:16px}

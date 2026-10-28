@@ -585,6 +585,51 @@ body.rv-open .floating .fl-home{margin:0;padding:12px 18px;border-radius:999px;b
 .vid .vt{position:absolute;left:12px;right:12px;bottom:12px;z-index:2;font-size:13px;line-height:1.4;font-weight:500;text-shadow:0 1px 4px rgba(0,0,0,.5)}
 .vid .vt small{display:block;margin-top:4px;font-size:11px;opacity:.8;letter-spacing:.04em}
 
+/* Góc sáng tạo (blog đọc từ Google Sheet) */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chip{border:1px solid var(--line);background:#FFF;border-radius:999px;padding:7px 14px;font-size:12.5px;letter-spacing:.04em;color:var(--taupe-dark);cursor:pointer;transition:background .25s,color .25s,border-color .25s}
+.chip.on,.chip:hover{background:var(--charcoal);color:#FFF;border-color:var(--charcoal)}
+.posts{display:grid;gap:16px;margin-top:24px}
+@media (min-width:821px){.posts{grid-template-columns:repeat(3,1fr);gap:22px}}
+.post{display:flex;flex-direction:column;background:#FFF;border:1px solid var(--line);border-radius:18px;overflow:hidden;text-decoration:none;color:var(--ink);transition:transform .35s,box-shadow .35s}
+.post:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(140,122,91,.16)}
+.post .pimg{aspect-ratio:16/10;background:linear-gradient(135deg,#F3E6D2,#D9B978);overflow:hidden;display:grid;place-items:center}
+.post .pimg img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.post:hover .pimg img{transform:scale(1.04)}
+.post .pimg span{font-family:var(--serif);font-style:italic;font-size:30px;color:#FFF;text-shadow:0 2px 10px rgba(0,0,0,.15)}
+.post .pbody{padding:18px 18px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.post .ptopic{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#A86F3B;font-weight:600}
+.post h3{margin:0;font-family:var(--serif);font-weight:600;font-size:20px;line-height:1.3}
+.post p{margin:0;font-size:14px;line-height:1.55;color:var(--taupe-dark)}
+.post .pdate{margin-top:auto;padding-top:8px;font-size:12.5px;color:var(--muted)}
+/* trang đọc bài */
+.reader{position:fixed;inset:0;z-index:70;background:var(--cream);overflow-y:auto;-webkit-overflow-scrolling:touch}
+body.rd-open{overflow:hidden}
+.reader-in{max-width:720px;margin:0 auto;padding:16px 20px 80px}
+.reader .art{margin-top:8px}
+.reader .art .ptopic{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#A86F3B;font-weight:600}
+.reader .art h1{font-family:var(--serif);font-weight:600;font-size:clamp(28px,5.6vw,40px);line-height:1.2;margin:12px 0 10px}
+.reader .art .pdate{font-size:13px;color:var(--muted)}
+.reader .art .cover{margin:22px 0 0;border-radius:18px;overflow:hidden}
+.reader .art .cover img{display:block;width:100%;height:auto}
+.reader .body{margin-top:26px;font-size:17px;line-height:1.75;color:var(--ink)}
+.reader .body p{margin:0 0 18px}
+.reader .body h2{font-family:var(--serif);font-weight:600;font-size:24px;line-height:1.3;margin:30px 0 12px}
+.reader .body h3{font-family:var(--serif);font-weight:600;font-size:20px;margin:24px 0 10px}
+.reader .body ul{margin:0 0 18px;padding-left:22px}
+.reader .body li{margin:4px 0}
+.reader .body img{display:block;max-width:100%;height:auto;border-radius:14px;margin:8px 0 18px}
+.reader .body blockquote{margin:0 0 18px;padding:14px 18px;border-left:3px solid #C9974F;background:#FFF;border-radius:0 12px 12px 0;font-family:var(--serif);font-style:italic;font-size:18px}
+.reader .body a{color:#A86F3B}
+.reader .rd-foot{margin-top:40px;padding-top:24px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:10px}
+.rd-share{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.rd-share button,.rd-share a{border:1px solid var(--line);background:#FFF;border-radius:999px;padding:8px 14px;font-size:12.5px;color:var(--taupe-dark);cursor:pointer;text-decoration:none;font-family:inherit}
+.rd-share button:hover,.rd-share a:hover{border-color:var(--charcoal);color:var(--ink)}
+body.rd-open .floating{display:block;opacity:1;transform:none;pointer-events:auto;z-index:80}
+body.rd-open .floating .deal,body.rd-open .floating .btn.primary{display:none}
+body.rd-open .floating .fl-home{margin:0;padding:12px 18px;background:var(--charcoal);color:#FFF;font-size:12px;box-shadow:0 10px 26px rgba(0,0,0,.22)}
+@media (min-width:821px){body.rd-open .floating{transform:translate(-50%,0)}}
+
 /* Cộng đồng Z AI Agent */
 #cong-dong{background:var(--charcoal);color:#F3EEE6}
 #cong-dong .label{color:#D9B978}
@@ -805,6 +850,7 @@ section[id]{scroll-margin-top:64px}
     </div>
     <a href="#du-an">Dự án</a>
     <a href="#doi-tac">Khách hàng</a>
+    <a href="#goc-sang-tao" id="navBlog" hidden>Góc sáng tạo</a>
     <a href="#cong-dong">Cộng đồng</a>
   </nav>
   <a class="btn primary small" href="#dat-lich">Đặt lịch</a>
@@ -1277,6 +1323,18 @@ section[id]{scroll-margin-top:64px}
   </div>
 </div></section>
 
+<section class="alt" id="goc-sang-tao" hidden><div class="wrap wide dk dk-stack">
+  <div class="sec-head">
+  <p class="label">Góc sáng tạo</p>
+  <h2>Chuyện nghề, tư duy và những điều Zựu học được khi làm thương hiệu.</h2>
+  <p class="lead">Bài viết ngắn quanh thiết kế sáng tạo: nhận diện, bao bì, mascot, art direction và cách dùng AI trong công việc.</p>
+  </div>
+  <div class="sec-body">
+  <div class="chips" id="postChips"></div>
+  <div class="posts" id="posts"></div>
+  </div>
+</div></section>
+
 <section id="video" hidden><div class="wrap wide dk dk-stack">
   <div class="sec-head">
   <p class="label">Video</p>
@@ -1387,6 +1445,12 @@ section[id]{scroll-margin-top:64px}
       <p class="err" id="rvErr">Anh/chị điền giúp Zựu họ tên, số sao, điểm giới thiệu và lời nhận xét nhé.</p>
     </form>
     </div>
+  </div>
+</div>
+<div class="reader" id="reader" role="dialog" aria-modal="true" hidden>
+  <div class="reader-in">
+    <div class="rvf-head"><a class="mark rv-home" href="#top" title="Về trang chủ">Zựu<i>.</i></a><a href="#goc-sang-tao" class="rvf-x" id="readerClose" aria-label="Đóng">×</a></div>
+    <div id="readerBody"></div>
   </div>
 </div>
 <div class="toast" id="toast">Đã sao chép</div>
@@ -1501,6 +1565,12 @@ const fl=document.getElementById("floating"), tt=document.getElementById("totop"
 
 /* Video TikTok: đọc từ Google Sheet "Video maizuu.vn" (cột A link, B tiêu đề, C gõ x để ẩn). Sheet phải để "Bất kỳ ai có đường liên kết: Người xem". Danh sách VIDEOS bên dưới chỉ dùng khi không đọc được Sheet. */
 const VIDEO_SHEET="1PHd7mZELhjhXMsoHxxgz9fL8fMJWspKGE2-X35u8E8w";
+/* Đọc một tab Google Sheet công khai thành mảng dòng (dòng đầu là tiêu đề cột) */
+const parseCSV=t=>{const rows=[];let row=[],cell="",q=false;for(let i=0;i<t.length;i++){const c=t[i];
+  if(q){if(c==='"'){if(t[i+1]==='"'){cell+='"';i++;}else q=false;}else cell+=c;}
+  else if(c==='"')q=true;else if(c===","){row.push(cell);cell="";}else if(c==="\n"){row.push(cell);rows.push(row);row=[];cell="";}else if(c!=="\r")cell+=c;}
+  if(cell||row.length){row.push(cell);rows.push(row);} return rows;};
+const sheetCSV=(id,sheet)=>fetch(`https://docs.google.com/spreadsheets/d/${id}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(sheet)}&t=${Date.now()}`).then(r=>{if(!r.ok)throw 0;return r.text();}).then(parseCSV);
 const VIDEOS=[];
 (function(){
   const sec=document.getElementById("video"), box=document.getElementById("vids"); if(!sec||!box) return;
@@ -1516,15 +1586,67 @@ const VIDEOS=[];
       if(!v.title&&d.title){a.querySelector(".vtt").textContent=d.title.slice(0,90);}
     }).catch(()=>{});});
   };
-  const parseCSV=t=>{const rows=[];let row=[],cell="",q=false;for(let i=0;i<t.length;i++){const c=t[i];
-    if(q){if(c==='"'){if(t[i+1]==='"'){cell+='"';i++;}else q=false;}else cell+=c;}
-    else if(c==='"')q=true;else if(c===","){row.push(cell);cell="";}else if(c==="\n"){row.push(cell);rows.push(row);row=[];cell="";}else if(c!=="\r")cell+=c;}
-    if(cell||row.length){row.push(cell);rows.push(row);} return rows;};
-  fetch(`https://docs.google.com/spreadsheets/d/${VIDEO_SHEET}/gviz/tq?tqx=out:csv&sheet=Video&t=${Date.now()}`)
-    .then(r=>{if(!r.ok)throw 0;return r.text();})
-    .then(t=>{const rows=parseCSV(t).slice(1).map(r=>({url:(r[0]||"").trim(),title:(r[1]||"").trim(),hide:(r[2]||"").trim()})).filter(v=>v.url&&!v.hide);
+  sheetCSV(VIDEO_SHEET,"Video")
+    .then(rows=>{rows=rows.slice(1).map(r=>({url:(r[0]||"").trim(),title:(r[1]||"").trim(),hide:(r[2]||"").trim()})).filter(v=>v.url&&!v.hide);
       render(rows.length?rows:VIDEOS);})
     .catch(()=>render(VIDEOS));
+})();
+/* Góc sáng tạo: bài viết đọc từ Google Sheet "Blog maizuu.vn", tab "Bài viết"
+   (A tiêu đề, B ngày, C chủ đề, D tóm tắt, E ảnh bìa, F nội dung, G gõ x để ẩn). Link bài: maizuu.vn/#bai/ten-bai */
+const BLOG_SHEET="1QFs_rmTsWSzwJvc41zS8Svzp50dG6jwyUZukP45bWdo";
+(function(){
+  const sec=document.getElementById("goc-sang-tao"), grid=document.getElementById("posts"), chips=document.getElementById("postChips"),
+        rd=document.getElementById("reader"), rb=document.getElementById("readerBody"); if(!sec||!grid||!rd) return;
+  const esc=s=>String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const slug=t=>String(t||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/đ/gi,"d").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,70);
+  /* link Drive "file/d/ID/view" đổi thành link ảnh xem trực tiếp */
+  const imgURL=u=>{u=String(u||"").trim(); const m=u.match(/drive\.google\.com\/(?:file\/d\/|open\?id=|uc\?.*id=)([\w-]+)/); return m?`https://lh3.googleusercontent.com/d/${m[1]}`:u;};
+  const isImg=l=>/^https?:\/\/\S+$/.test(l)&&(/\.(png|jpe?g|gif|webp|avif)(\?|$)/i.test(l)||/drive\.google\.com|googleusercontent\.com/.test(l));
+  const inline=t=>esc(t).replace(/\*\*(.+?)\*\*/g,"<b>$1</b>").replace(/(https?:\/\/[^\s<]+)/g,'<a href="$1" target="_blank" rel="noopener">$1</a>');
+  const render=txt=>{const out=[];let list=null;const flush=()=>{if(list){out.push("<ul>"+list.join("")+"</ul>");list=null;}};
+    String(txt||"").replace(/\r/g,"").split(/\n{2,}/).forEach(blk=>{const lines=blk.split("\n").map(l=>l.trim()).filter(Boolean); if(!lines.length) return;
+      if(lines.every(l=>/^[-•]\s+/.test(l))){lines.forEach(l=>{list=list||[];list.push("<li>"+inline(l.replace(/^[-•]\s+/,""))+"</li>");});flush();return;}
+      flush();
+      if(lines.length===1&&isImg(lines[0])){out.push(`<img src="${esc(imgURL(lines[0]))}" alt="" loading="lazy">`);return;}
+      if(/^##\s+/.test(lines[0])){out.push("<h3>"+inline(lines[0].replace(/^##\s+/,""))+"</h3>");lines.shift();}
+      else if(/^#\s+/.test(lines[0])){out.push("<h2>"+inline(lines[0].replace(/^#\s+/,""))+"</h2>");lines.shift();}
+      if(!lines.length) return;
+      if(lines.every(l=>/^>\s?/.test(l))){out.push("<blockquote>"+lines.map(l=>inline(l.replace(/^>\s?/,""))).join("<br>")+"</blockquote>");return;}
+      out.push("<p>"+lines.map(inline).join("<br>")+"</p>");});
+    flush(); return out.join("");};
+  const fmtD=d=>d||"";
+  let POSTS=[], topic="";
+  const card=p=>`<a class="post" href="#bai/${p.slug}" data-slug="${p.slug}">
+      <div class="pimg">${p.cover?`<img src="${esc(imgURL(p.cover))}" alt="" loading="lazy">`:`<span>Zựu.</span>`}</div>
+      <div class="pbody">${p.topic?`<span class="ptopic">${esc(p.topic)}</span>`:""}<h3>${esc(p.title)}</h3>${p.summary?`<p>${esc(p.summary)}</p>`:""}<span class="pdate">${esc(fmtD(p.date))}</span></div></a>`;
+  const draw=()=>{const list=topic?POSTS.filter(p=>p.topic===topic):POSTS; grid.innerHTML=list.map(card).join("");};
+  const open=p=>{
+    rb.innerHTML=`<article class="art">${p.topic?`<span class="ptopic">${esc(p.topic)}</span>`:""}<h1>${esc(p.title)}</h1><span class="pdate">${esc(fmtD(p.date))} · Mai Zựu</span>
+      ${p.cover?`<figure class="cover"><img src="${esc(imgURL(p.cover))}" alt=""></figure>`:""}
+      <div class="body">${render(p.body)}</div>
+      <div class="rd-share"><button type="button" id="rdCopy">Sao chép link bài</button><a href="https://zalo.me/0333350603" target="_blank" rel="noopener">Hỏi Zựu về bài này</a></div>
+      <div class="rd-foot"><a class="btn line" href="#goc-sang-tao" id="rdBack">← Bài khác</a><a class="btn primary" href="#dat-lich" id="rdBook">Kể cho Zựu nghe về thương hiệu của bạn</a></div></article>`;
+    rd.hidden=false; document.body.classList.add("rd-open"); rd.scrollTop=0; document.title=p.title+" · Mai Zựu";
+    const link=location.origin+location.pathname+"#bai/"+p.slug;
+    document.getElementById("rdCopy").addEventListener("click",()=>{copy(link);toast("Đã sao chép link bài");});
+    document.getElementById("rdBack").addEventListener("click",e=>{e.preventDefault();close();document.getElementById("goc-sang-tao").scrollIntoView({behavior:"smooth"});});
+    document.getElementById("rdBook").addEventListener("click",e=>{e.preventDefault();close();document.getElementById("dat-lich").scrollIntoView({behavior:"smooth"});});
+  };
+  const close=()=>{if(rd.hidden) return; rd.hidden=true; document.body.classList.remove("rd-open"); document.title="Mai Zựu"; if(location.hash.startsWith("#bai/")) history.replaceState(null,"",location.pathname+location.search);};
+  const check=()=>{const m=location.hash.match(/^#bai\/(.+)$/); if(!m){close();return;} const p=POSTS.find(x=>x.slug===decodeURIComponent(m[1])); if(p) open(p);};
+  document.getElementById("readerClose").addEventListener("click",e=>{e.preventDefault();close();});
+  document.querySelectorAll(".rv-home").forEach(a=>a.addEventListener("click",close));
+  addEventListener("hashchange",check);
+  sheetCSV(BLOG_SHEET,"Bài viết").then(rows=>{
+    POSTS=rows.slice(1).map(r=>({title:(r[0]||"").trim(),date:(r[1]||"").trim(),topic:(r[2]||"").trim(),summary:(r[3]||"").trim(),cover:(r[4]||"").trim(),body:r[5]||"",hide:(r[6]||"").trim()}))
+      .filter(p=>p.title&&!p.hide).map(p=>({...p,slug:slug(p.title)}));
+    if(!POSTS.length) return;
+    const topics=[...new Set(POSTS.map(p=>p.topic).filter(Boolean))];
+    if(topics.length>1){chips.innerHTML=`<button type="button" class="chip on" data-t="">Tất cả</button>`+topics.map(t=>`<button type="button" class="chip" data-t="${esc(t)}">${esc(t)}</button>`).join("");
+      chips.addEventListener("click",e=>{const b=e.target.closest(".chip"); if(!b) return; topic=b.dataset.t; chips.querySelectorAll(".chip").forEach(c=>c.classList.toggle("on",c===b)); draw();});}
+    draw(); sec.hidden=false; const nb=document.getElementById("navBlog"); if(nb) nb.hidden=false;
+    check();
+  }).catch(()=>{});
 })();
 /* Cộng đồng Z AI Agent: sao chép lời nhắn trước khi mở Zalo */
 (function(){const a=document.getElementById("zaiZalo"); if(a) a.addEventListener("click",()=>copy("Chào Zựu, mình muốn vào cộng đồng Z AI Agent. Mình là ... , đang làm ..."));})();

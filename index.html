@@ -587,6 +587,8 @@ body.rv-open .floating .fl-home{margin:0;padding:12px 18px;border-radius:999px;b
 .vid .play::before{content:"";margin-left:4px;border-left:16px solid #FFF;border-top:10px solid transparent;border-bottom:10px solid transparent}
 .vid .vt{position:absolute;left:12px;right:12px;bottom:12px;z-index:2;font-size:13px;line-height:1.4;font-weight:500;text-shadow:0 1px 4px rgba(0,0,0,.5)}
 .vid .vt small{display:block;margin-top:4px;font-size:11px;opacity:.8;letter-spacing:.04em}
+.vid .vframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000}
+.vid.has-frame::after,.vid.has-frame .play,.vid.has-frame .vt{display:none}
 
 /* Góc sáng tạo (blog đọc từ Google Sheet) */
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
@@ -1220,7 +1222,7 @@ section[id]{scroll-margin-top:64px}
     <div class="priv"><span>iii.</span><div><b>Giám sát test màu tại xưởng in</b><span class="muted">Màu in ra đúng màu đã duyệt.</span></div></div>
     <div class="priv"><span>iv.</span><div><b>Kho thương hiệu trực tuyến</b><span class="muted">Nhân viên và xưởng luôn dùng đúng file mới nhất.</span></div></div>
     <div class="priv"><span>v.</span><div><b>90 ngày đồng hành sau bàn giao</b><span class="muted">Các buổi rà soát để thương hiệu được dùng đúng ngoài đời thật.</span></div></div>
-    <div class="priv"><span>vi.</span><div><b>Video kể chuyện dự án trên <a class="tt" href="https://www.tiktok.com/@zuu.designer" target="_blank" rel="noopener">@zuu.designer</a></b><span class="muted">Khi bạn đồng ý, thương hiệu của bạn có thêm một kênh giới thiệu.</span></div></div>
+    <div class="priv"><span>vi.</span><div><b>Video kể chuyện dự án trên <a class="tt" href="https://www.tiktok.com/@zuu.art" target="_blank" rel="noopener">@zuu.art</a></b><span class="muted">Khi bạn đồng ý, thương hiệu của bạn có thêm một kênh giới thiệu.</span></div></div>
     <div class="priv"><span>vii.</span><div><b>Hoàn phí Clinic</b><span class="muted">Phí buổi Clinic được trừ vào gói thiết kế.</span></div></div>
     <div class="priv"><span>viii.</span><div><b>Ưu tiên lịch</b><span class="muted">Mỗi tháng chỉ nhận 3 dự án trọn bộ để giữ chất lượng.</span></div></div>
   </div>
@@ -1299,7 +1301,7 @@ section[id]{scroll-margin-top:64px}
     <li><b>Giám sát test màu tại xưởng in</b>, màu in ra đúng màu đã duyệt.</li>
     <li><b>Kho thương hiệu trực tuyến</b> để nhân viên và xưởng luôn dùng đúng file mới nhất.</li>
     <li><b>90 ngày đồng hành</b> sau bàn giao, rà soát để thương hiệu được dùng đúng.</li>
-    <li><b>Video kể chuyện dự án</b> trên TikTok @zuu.designer.</li>
+    <li><b>Video kể chuyện dự án</b> trên TikTok @zuu.art.</li>
   </ul>
   <a class="perks-more" href="#dac-quyen">Xem đủ 8 đặc quyền khi vào gói →</a>
   </div>
@@ -1388,7 +1390,7 @@ section[id]{scroll-margin-top:64px}
   </div>
   <div class="sec-body">
   <div class="chips" id="postChips"></div>
-  <div class="posts" id="posts"><p class="fine" id="postsEmpty">Bài đầu tiên đang được chuẩn bị. Trong lúc chờ, bạn xem <a class="tt" href="#du-an">dự án</a> hoặc theo dõi TikTok <a class="tt" href="https://www.tiktok.com/@zuu.designer" target="_blank" rel="noopener">@zuu.designer</a>.</p></div>
+  <div class="posts" id="posts"><p class="fine" id="postsEmpty">Bài đầu tiên đang được chuẩn bị. Trong lúc chờ, bạn xem <a class="tt" href="#du-an">dự án</a> hoặc theo dõi TikTok <a class="tt" href="https://www.tiktok.com/@zuu.art" target="_blank" rel="noopener">@zuu.art</a>.</p></div>
   </div>
 </div></section>
 
@@ -1396,11 +1398,11 @@ section[id]{scroll-margin-top:64px}
   <div class="sec-head">
   <p class="label">Video</p>
   <h2>Hậu trường và cách Zựu làm thương hiệu.</h2>
-  <p class="lead">Chạm vào một video để xem trên TikTok <a class="tt" href="https://www.tiktok.com/@zuu.designer" target="_blank" rel="noopener">@zuu.designer</a>.</p>
+  <p class="lead">Chạm vào một video để xem trên TikTok <a class="tt" href="https://www.tiktok.com/@zuu.art" target="_blank" rel="noopener">@zuu.art</a>.</p>
   </div>
   <div class="sec-body">
   <div class="vids" id="vids"></div>
-  <div class="more"><a class="btn line" href="https://www.tiktok.com/@zuu.designer" target="_blank" rel="noopener">Xem thêm trên TikTok</a></div>
+  <div class="more"><a class="btn line" href="https://www.tiktok.com/@zuu.art" target="_blank" rel="noopener">Xem thêm trên TikTok</a></div>
   </div>
 </div></section>
 
@@ -1433,7 +1435,7 @@ section[id]{scroll-margin-top:64px}
 <footer><div class="wrap">
   <span class="mark">Zựu<i>.</i></span>
   <p>Art Direction &amp; Brand Identity · Văn Phú, Hà Đông, Hà Nội</p>
-  <p style="margin-top:6px">Zalo <a href="https://zalo.me/0333350603">0333 350 603</a> · TikTok <a href="https://www.tiktok.com/@zuu.designer">@zuu.designer</a> · <a href="https://www.behance.net/maizuu">Behance</a> · <a href="#danh-gia-dich-vu">Đánh giá dịch vụ</a></p>
+  <p style="margin-top:6px">Zalo <a href="https://zalo.me/0333350603">0333 350 603</a> · TikTok <a href="https://www.tiktok.com/@zuu.art">@zuu.art</a> · <a href="https://www.behance.net/maizuu">Behance</a> · <a href="#danh-gia-dich-vu">Đánh giá dịch vụ</a></p>
   <p class="foot-links"><a href="#dich-vu">Dịch vụ</a> · <a href="#du-an">Dự án</a> · <a href="#goc-sang-tao">Góc sáng tạo</a> · <a href="#video">Video</a> · <a href="#cong-dong">Cộng đồng Z AI Agent</a> · <a href="#dat-lich">Đặt lịch</a></p>
   <p class="motto">Định hình giá trị nghệ thuật Việt Nam</p>
 </div></footer>
@@ -1658,14 +1660,19 @@ const VIDEOS=[];
   const esc=s=>String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   const render=list=>{
     list=list.filter(v=>/tiktok\.com\//i.test(v.url)); if(!list.length) return;
-    box.innerHTML=list.map((v,i)=>`<a class="vid" href="${esc(v.url)}" target="_blank" rel="noopener" data-i="${i}"><span class="play"></span><span class="vt"><span class="vtt">${esc(v.title||"")}</span><small>TikTok · @zuu.designer</small></span></a>`).join("");
+    const handle=u=>{const m=/tiktok\.com\/(@[\w.-]+)/i.exec(u); return m?m[1]:"@zuu.art";};
+    box.innerHTML=list.map((v,i)=>`<a class="vid" href="${esc(v.url)}" target="_blank" rel="noopener" data-i="${i}"><span class="play"></span><span class="vt"><span class="vtt">${esc(v.title||"")}</span><small>TikTok · ${esc(handle(v.url))}</small></span></a>`).join("");
     sec.hidden=false; const mv=document.getElementById("mnavVideo"); if(mv) mv.hidden=false;
-    /* lấy ảnh bìa và tiêu đề từ TikTok, lấy không được thì giữ thẻ nền đỏ */
-    list.forEach((v,i)=>{fetch("https://www.tiktok.com/oembed?url="+encodeURIComponent(v.url)).then(r=>r.json()).then(d=>{
-      const a=box.querySelector(`[data-i="${i}"]`); if(!a||!d) return;
-      if(d.thumbnail_url){const im=new Image(); im.src=d.thumbnail_url; im.alt=""; im.loading="lazy"; a.prepend(im);}
-      if(!v.title&&d.title){a.querySelector(".vtt").textContent=d.title.slice(0,90);}
-    }).catch(()=>{});});
+    /* lấy ảnh bìa và tiêu đề từ TikTok: gọi thẳng, bị chặn thì đi qua cầu nối; không được nữa thì nhúng khung TikTok */
+    const oe="https://www.tiktok.com/oembed?url=";
+    const viaList=u=>[oe+encodeURIComponent(u),"https://corsproxy.io/?"+encodeURIComponent(oe+encodeURIComponent(u)),"https://api.allorigins.win/raw?url="+encodeURIComponent(oe+encodeURIComponent(u))];
+    const getMeta=async u=>{for(const src of viaList(u)){try{const r=await fetch(src,{signal:AbortSignal.timeout(9000)}); if(!r.ok) continue; const d=await r.json(); if(d&&(d.thumbnail_url||d.title)) return d;}catch(e){}} return null;};
+    const embedFrame=(a,u)=>{const m=/video\/(\d+)/.exec(u); if(!m) return; const f=document.createElement("iframe"); f.className="vframe"; f.src="https://www.tiktok.com/embed/v2/"+m[1]; f.loading="lazy"; f.allow="encrypted-media; fullscreen"; f.title="TikTok"; a.classList.add("has-frame"); a.prepend(f);};
+    list.forEach((v,i)=>{getMeta(v.url).then(d=>{
+      const a=box.querySelector(`[data-i="${i}"]`); if(!a) return;
+      if(d&&d.thumbnail_url){const im=new Image(); im.src=d.thumbnail_url; im.alt=""; im.loading="lazy"; im.onerror=()=>{im.remove(); embedFrame(a,v.url);}; a.prepend(im);} else embedFrame(a,v.url);
+      if(!v.title&&d&&d.title){a.querySelector(".vtt").textContent=d.title.slice(0,90);}
+    });});
   };
   sheetCSV(VIDEO_SHEET,"Video")
     .then(rows=>{rows=rows.slice(1).map(r=>({url:(r[0]||"").trim(),title:(r[1]||"").trim(),hide:(r[2]||"").trim()})).filter(v=>v.url&&!v.hide);
@@ -1755,7 +1762,7 @@ const GIFTS=[
   {k:"B1TR",t:"Giảm 1.000.000đ",d:"Khi ký hợp đồng Branding bất kỳ",w:18,days:14},
   {k:"V1TR",t:"Phiếu 1.000.000đ",d:"Trừ thẳng vào hợp đồng thiết kế mới",w:15,days:14},
   {k:"DUO",t:"Khám Duo miễn phí cho một người bạn",d:"Tặng bạn của anh/chị buổi Khám thương hiệu Duo trị giá 990.000đ",w:13,days:30},
-  {k:"TIKTOK",t:"Video “Zựu kể chuyện thương hiệu của bạn”",d:"Đăng trên TikTok @zuu.designer, 74,1K người theo dõi",w:12,days:30},
+  {k:"TIKTOK",t:"Video “Zựu kể chuyện thương hiệu của bạn”",d:"Đăng trên TikTok @zuu.art, 74,1K người theo dõi",w:12,days:30},
   {k:"B5",t:"Giảm 5% gói Branding",d:"Áp dụng cho các gói Branding",w:10,days:14},
   {k:"MASCOT",t:"Mascot mini miễn phí",d:"1 dáng mascot 2D đi kèm khi ký gói Branding",w:6,days:14},
   {k:"B10",t:"Giảm 10% gói Branding",d:"Giải đặc biệt",w:3,days:14,special:1},
